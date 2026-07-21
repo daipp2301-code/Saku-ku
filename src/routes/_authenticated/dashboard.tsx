@@ -83,7 +83,7 @@ function DashboardPage() {
 
   const recent = useMemo(() => (txs ?? []).slice(0, 5), [txs]);
 
-  const pieColors = ["#6366f1", "#10b981", "#ef4444", "#f59e0b", "#a855f7", "#ec4899", "#14b8a6", "#f97316"];
+  const pieColors = ["#111111", "#333333", "#555555", "#777777", "#999999", "#bbbbbb", "#dddddd", "#444444"];
 
   if (isLoading) {
     return (
@@ -113,9 +113,9 @@ function DashboardPage() {
       </div>
 
       {/* Hero Balance Card */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-orange-500 to-amber-500 p-6 md:p-8 text-primary-foreground shadow-2xl shadow-primary/25">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-foreground via-neutral-700 to-neutral-800 p-6 md:p-8 text-background shadow-2xl shadow-foreground/15">
         <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-        <div className="absolute -left-10 -bottom-16 h-48 w-48 rounded-full bg-amber-300/25 blur-3xl" />
+        <div className="absolute -left-10 -bottom-16 h-48 w-48 rounded-full bg-white/8 blur-3xl" />
         <div className="relative grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
           <div className="min-w-0">
             <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-widest backdrop-blur">
@@ -124,18 +124,18 @@ function DashboardPage() {
             <p className="mt-4 text-4xl md:text-5xl font-black tracking-tight">{formatRupiah(summary.balance)}</p>
             <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 font-semibold backdrop-blur">
-                <ArrowUpRight className="h-3 w-3 text-emerald-300" />
+                <ArrowUpRight className="h-3 w-3 text-white/70" />
                 Masuk bulan ini {formatRupiah(summary.monthIncome)}
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 font-semibold backdrop-blur">
-                <ArrowDownRight className="h-3 w-3 text-rose-300" />
+                <ArrowDownRight className="h-3 w-3 text-white/50" />
                 Keluar {formatRupiah(summary.monthExpense)}
               </span>
             </div>
           </div>
           <div className="flex gap-2 md:justify-end">
             <Link to="/transactions">
-              <Button size="sm" className="rounded-2xl bg-white text-primary hover:bg-white/95 gap-2 shadow-lg">
+              <Button size="sm" className="rounded-2xl bg-white text-foreground hover:bg-white/95 gap-2 shadow-lg">
                 <Plus className="h-4 w-4" /> Tambah
               </Button>
             </Link>
@@ -161,7 +161,7 @@ function DashboardPage() {
         <Card className="lg:col-span-2 rounded-3xl border-border/60 bg-card/70 backdrop-blur">
           <CardHeader className="flex flex-row items-center justify-between space-y-0">
             <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-2xl bg-primary/10 text-primary">
+              <span className="grid h-10 w-10 place-items-center rounded-2xl bg-foreground/8 text-foreground/70">
                 <TrendingUp className="h-5 w-5" />
               </span>
               <CardTitle className="text-base md:text-lg">Pemasukan vs Pengeluaran</CardTitle>
@@ -185,7 +185,7 @@ function DashboardPage() {
 
         <Card className="rounded-3xl border-border/60 bg-card/70 backdrop-blur">
           <CardHeader className="flex flex-row items-center gap-3 space-y-0">
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-rose-500/10 text-rose-500">
+            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-foreground/8 text-foreground/70">
               <PieChart className="h-5 w-5" />
             </span>
             <CardTitle className="text-base md:text-lg">Distribusi Pengeluaran</CardTitle>
@@ -212,7 +212,7 @@ function DashboardPage() {
       <div className="grid gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2 rounded-3xl border-border/60 bg-card/70 backdrop-blur">
           <CardHeader className="flex flex-row items-center gap-3 space-y-0">
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-emerald-500/10 text-emerald-500">
+            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-foreground/8 text-foreground/70">
               <Wallet className="h-5 w-5" />
             </span>
             <CardTitle className="text-base md:text-lg">Arus Kas Bersih</CardTitle>
@@ -239,7 +239,7 @@ function DashboardPage() {
         <Card className="rounded-3xl border-border/60 bg-card/70 backdrop-blur">
           <CardHeader className="flex flex-row items-center justify-between space-y-0">
             <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-2xl bg-sky-500/10 text-sky-500">
+              <span className="grid h-10 w-10 place-items-center rounded-2xl bg-foreground/8 text-foreground/70">
                 <Receipt className="h-5 w-5" />
               </span>
               <CardTitle className="text-base md:text-lg">Terbaru</CardTitle>
@@ -258,7 +258,7 @@ function DashboardPage() {
                 <div key={t.id} className="flex items-center gap-3 rounded-2xl p-2 -mx-2 transition-colors hover:bg-accent/50">
                   <span className={cn(
                     "grid h-11 w-11 shrink-0 place-items-center rounded-2xl",
-                    isIncome ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400" : "bg-rose-500/10 text-rose-600 dark:text-rose-400"
+                    isIncome ? "bg-foreground/8 text-foreground/70" : "bg-foreground/8 text-foreground/50"
                   )}>
                     {isIncome ? <ArrowUpRight className="h-5 w-5" /> : <ArrowDownRight className="h-5 w-5" />}
                   </span>
@@ -270,7 +270,7 @@ function DashboardPage() {
                   </div>
                   <p className={cn(
                     "shrink-0 text-sm font-bold tabular-nums",
-                    isIncome ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"
+                    isIncome ? "text-foreground" : "text-muted-foreground"
                   )}>
                     {isIncome ? "+" : "-"} {formatRupiah(t.amount)}
                   </p>
@@ -293,9 +293,9 @@ function StatCard({
   tone: "income" | "expense" | "neutral";
 }) {
   const chip =
-    tone === "income" ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400" :
-    tone === "expense" ? "bg-rose-500/10 text-rose-600 dark:text-rose-400" :
-    "bg-primary/10 text-primary";
+    tone === "income" ? "bg-foreground/8 text-foreground/70" :
+    tone === "expense" ? "bg-foreground/8 text-foreground/50" :
+    "bg-foreground/8 text-foreground/70";
   return (
     <Card className="rounded-3xl border-border/60 bg-card/70 backdrop-blur transition-all hover:shadow-lg hover:-translate-y-0.5">
       <CardContent className="p-5">

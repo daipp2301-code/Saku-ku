@@ -19,13 +19,13 @@ import { cn } from "@/lib/utils";
 import { useQueryClient } from "@tanstack/react-query";
 
 const nav = [
-  { to: "/dashboard", label: "Dasbor", icon: LayoutDashboard, tint: "bg-amber-500/15 text-amber-600" },
-  { to: "/transactions", label: "Transaksi", icon: ArrowLeftRight, tint: "bg-sky-500/15 text-sky-500" },
-  { to: "/categories", label: "Kategori", icon: Tags, tint: "bg-orange-500/15 text-orange-500" },
-  { to: "/budgets", label: "Anggaran", icon: PieChart, tint: "bg-amber-500/15 text-amber-500" },
-  { to: "/goals", label: "Tabungan", icon: Target, tint: "bg-emerald-500/15 text-emerald-500" },
-  { to: "/reports", label: "Laporan", icon: FileBarChart, tint: "bg-rose-500/15 text-rose-500" },
-  { to: "/settings", label: "Pengaturan", icon: Settings, tint: "bg-slate-500/15 text-slate-500" },
+  { to: "/dashboard", label: "Dasbor", icon: LayoutDashboard, tint: "bg-foreground/8 text-foreground/70" },
+  { to: "/transactions", label: "Transaksi", icon: ArrowLeftRight, tint: "bg-foreground/8 text-foreground/70" },
+  { to: "/categories", label: "Kategori", icon: Tags, tint: "bg-foreground/8 text-foreground/70" },
+  { to: "/budgets", label: "Anggaran", icon: PieChart, tint: "bg-foreground/8 text-foreground/70" },
+  { to: "/goals", label: "Tabungan", icon: Target, tint: "bg-foreground/8 text-foreground/70" },
+  { to: "/reports", label: "Laporan", icon: FileBarChart, tint: "bg-foreground/8 text-foreground/70" },
+  { to: "/settings", label: "Pengaturan", icon: Settings, tint: "bg-foreground/8 text-foreground/70" },
 ] as const;
 
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
@@ -41,16 +41,16 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
             to={item.to}
             onClick={onNavigate}
             className={cn(
-              "group flex items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-semibold transition-all",
+              "group flex items-center gap-3 rounded-2xl px-3.5 py-2.5 text-sm font-bold transition-all",
               active
-                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
-                : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground",
+                ? "bg-foreground text-background shadow-md shadow-foreground/15"
+                : "text-sidebar-foreground/75 hover:bg-sidebar-accent hover:text-sidebar-foreground",
             )}
           >
             <span
               className={cn(
                 "grid h-8 w-8 shrink-0 place-items-center rounded-xl transition-all",
-                active ? "bg-white/20 text-primary-foreground" : item.tint,
+                active ? "bg-background/20 text-background" : item.tint,
               )}
             >
               <Icon className="h-4 w-4" />
@@ -66,7 +66,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
 function Brand() {
   return (
     <div className="flex items-center gap-3 px-5 py-6">
-      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-primary via-primary to-amber-500 text-primary-foreground shadow-lg shadow-primary/30">
+      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-foreground text-background shadow-lg shadow-foreground/15">
         <Wallet className="h-5 w-5" />
       </div>
       <div className="min-w-0 leading-tight">
@@ -79,9 +79,9 @@ function Brand() {
 
 function UpgradeCard() {
   return (
-    <div className="mx-3 mb-4 mt-auto rounded-3xl bg-gradient-to-br from-slate-900 via-stone-800 to-slate-900 p-5 text-white relative overflow-hidden">
-      <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/40 blur-2xl" />
-      <div className="absolute -left-4 -bottom-6 h-20 w-20 rounded-full bg-amber-500/30 blur-2xl" />
+    <div className="mx-3 mb-4 mt-auto rounded-3xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 p-5 text-white relative overflow-hidden">
+      <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/15 blur-2xl" />
+      <div className="absolute -left-4 -bottom-6 h-20 w-20 rounded-full bg-white/10 blur-2xl" />
       <div className="relative">
         <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider backdrop-blur">
           <Sparkles className="h-3 w-3" /> Saku Pro
@@ -154,11 +154,11 @@ export function AppShell({ children }: { children: ReactNode }) {
 
           <button className="relative grid h-10 w-10 place-items-center rounded-2xl border border-border/70 bg-background/50 text-muted-foreground transition-colors hover:text-foreground">
             <Bell className="h-4 w-4" />
-            <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-rose-500 ring-2 ring-background" />
+            <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-foreground ring-2 ring-background" />
           </button>
 
           <Link to="/transactions">
-            <Button size="sm" className="hidden sm:inline-flex gap-2 rounded-2xl bg-gradient-to-r from-primary to-amber-500 shadow-lg shadow-primary/25 hover:opacity-95">
+            <Button size="sm" className="hidden sm:inline-flex gap-2 rounded-2xl bg-foreground text-background shadow-lg shadow-foreground/15 hover:opacity-90">
               <Plus className="h-4 w-4" /> Transaksi
             </Button>
           </Link>
@@ -167,7 +167,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <DropdownMenuTrigger asChild>
               <button className="rounded-2xl outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring">
                 <Avatar className="h-10 w-10 rounded-2xl border-2 border-background shadow-md">
-                  <AvatarFallback className="rounded-2xl bg-gradient-to-br from-primary to-amber-500 text-primary-foreground text-sm font-bold">{initials}</AvatarFallback>
+                  <AvatarFallback className="rounded-2xl bg-foreground text-background text-sm font-bold">{initials}</AvatarFallback>
                 </Avatar>
               </button>
             </DropdownMenuTrigger>
@@ -192,7 +192,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         {/* Floating action button on mobile */}
         <Link
           to="/transactions"
-          className="sm:hidden fixed bottom-6 right-6 z-40 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-primary to-amber-500 text-primary-foreground shadow-xl shadow-primary/40 active:scale-95 transition-transform"
+          className="sm:hidden fixed bottom-6 right-6 z-40 grid h-14 w-14 place-items-center rounded-2xl bg-foreground text-background shadow-xl shadow-foreground/20 active:scale-95 transition-transform"
           aria-label="Tambah Transaksi"
         >
           <Plus className="h-6 w-6" />

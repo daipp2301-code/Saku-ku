@@ -94,7 +94,7 @@ function ReportsPage() {
     const rowsHtml = filtered.map((t) => {
       const cat = cats?.find((c) => c.id === t.category_id)?.name ?? "";
       const sign = t.type === "income" ? "+" : "−";
-      const color = t.type === "income" ? "#059669" : "#dc2626";
+      const color = t.type === "income" ? "#111111" : "#666666";
       return `<tr>
         <td>${formatDate(t.date)}</td>
         <td>${t.type === "income" ? "Pemasukan" : "Pengeluaran"}</td>
@@ -108,8 +108,8 @@ function ReportsPage() {
       <style>body{font-family:system-ui;padding:24px;color:#111}h1{margin:0 0 4px}table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13px}th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}th{background:#f3f4f6}.summary{display:flex;gap:12px;margin-top:12px}.card{flex:1;padding:12px;border:1px solid #eee;border-radius:8px}</style></head>
       <body><h1>Laporan Keuangan</h1><div style="color:#666;font-size:13px">Periode: ${labelFor(period, month, year)}</div>
       <div class="summary">
-        <div class="card"><div style="font-size:11px;color:#666">Pemasukan</div><div style="font-size:18px;font-weight:700;color:#059669">${formatRupiah(totals.income)}</div></div>
-        <div class="card"><div style="font-size:11px;color:#666">Pengeluaran</div><div style="font-size:18px;font-weight:700;color:#dc2626">${formatRupiah(totals.expense)}</div></div>
+        <div class="card"><div style="font-size:11px;color:#666">Pemasukan</div><div style="font-size:18px;font-weight:700;color:#111111">${formatRupiah(totals.income)}</div></div>
+        <div class="card"><div style="font-size:11px;color:#666">Pengeluaran</div><div style="font-size:18px;font-weight:700;color:#666666">${formatRupiah(totals.expense)}</div></div>
         <div class="card"><div style="font-size:11px;color:#666">Saldo</div><div style="font-size:18px;font-weight:700">${formatRupiah(totals.balance)}</div></div>
       </div>
       <table><thead><tr><th>Tanggal</th><th>Tipe</th><th>Kategori</th><th>Produk</th><th>Deskripsi</th><th style="text-align:right">Jumlah</th></tr></thead><tbody>${rowsHtml}</tbody></table>
@@ -198,16 +198,17 @@ function ReportsPage() {
                     <TableRow key={t.id}>
                       <TableCell>{formatDate(t.date)}</TableCell>
                       <TableCell>
-                        <Badge variant="outline" className={cn("border-0", isIncome
-                          ? "bg-[oklch(var(--income)/0.1)] text-[oklch(var(--income))]"
-                          : "bg-[oklch(var(--expense)/0.1)] text-[oklch(var(--expense))]")}>
+                        <Badge variant="outline" className={cn(
+                          "border px-2.5 py-0.5 text-xs font-bold rounded-xl",
+                          isIncome ? "bg-foreground text-background border-foreground"
+                            : "bg-accent/60 text-foreground/70 border-border/80")}>
                           {isIncome ? "Masuk" : "Keluar"}
                         </Badge>
                       </TableCell>
                       <TableCell>{cat}</TableCell>
                       <TableCell>{t.product ?? "—"}</TableCell>
-                      <TableCell className={cn("text-right font-semibold whitespace-nowrap",
-                        isIncome ? "text-[oklch(var(--income))]" : "text-[oklch(var(--expense))]")}>
+                      <TableCell className={cn("text-right font-extrabold whitespace-nowrap tabular-nums",
+                        isIncome ? "text-foreground" : "text-muted-foreground")}>
                         {isIncome ? "+" : "−"} {formatRupiah(t.amount)}
                       </TableCell>
                     </TableRow>
@@ -226,9 +227,9 @@ function SummaryCard({ label, value, tone }: { label: string; value: number; ton
   return (
     <Card>
       <CardContent className="p-5">
-        <p className="text-xs font-medium text-muted-foreground">{label}</p>
-        <p className={cn("mt-2 text-2xl font-bold",
-          tone === "income" ? "text-[oklch(var(--income))]" : "text-[oklch(var(--expense))]")}>
+        <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
+        <p className={cn("mt-2 text-2xl font-black tracking-tight",
+          tone === "income" ? "text-foreground" : "text-foreground/80")}>
           {formatRupiah(value)}
         </p>
       </CardContent>

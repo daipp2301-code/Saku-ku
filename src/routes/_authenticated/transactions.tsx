@@ -178,9 +178,9 @@ function TransactionsPage() {
                       <TableCell className="whitespace-nowrap text-sm">{formatDate(t.date)}</TableCell>
                       <TableCell>
                         <Badge variant="outline" className={cn(
-                          "gap-1 border-0",
-                          isIncome ? "bg-[oklch(var(--income)/0.1)] text-[oklch(var(--income))]"
-                                   : "bg-[oklch(var(--expense)/0.1)] text-[oklch(var(--expense))]")}>
+                          "gap-1 border px-2.5 py-0.5 text-xs font-bold rounded-xl",
+                          isIncome ? "bg-foreground text-background border-foreground"
+                                   : "bg-accent/60 text-foreground/70 border-border/80")}>
                           {isIncome ? <ArrowUpCircle className="h-3 w-3" /> : <ArrowDownCircle className="h-3 w-3" />}
                           {isIncome ? "Masuk" : "Keluar"}
                         </Badge>
@@ -188,8 +188,8 @@ function TransactionsPage() {
                       <TableCell>{cat?.name ?? "—"}</TableCell>
                       <TableCell className="max-w-[160px] truncate">{t.product ?? "—"}</TableCell>
                       <TableCell className="hidden md:table-cell max-w-[200px] truncate text-muted-foreground">{t.description ?? "—"}</TableCell>
-                      <TableCell className={cn("text-right font-semibold whitespace-nowrap",
-                        isIncome ? "text-[oklch(var(--income))]" : "text-[oklch(var(--expense))]")}>
+                      <TableCell className={cn("text-right font-extrabold whitespace-nowrap tabular-nums",
+                        isIncome ? "text-foreground" : "text-muted-foreground")}>
                         {isIncome ? "+" : "−"} {formatRupiah(t.amount)}
                       </TableCell>
                       <TableCell className="hidden lg:table-cell text-sm text-muted-foreground">{t.payment_method ?? "—"}</TableCell>

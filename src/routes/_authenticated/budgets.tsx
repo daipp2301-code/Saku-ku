@@ -184,13 +184,13 @@ function BudgetsPage() {
                   <Progress value={pct} className={cn(over && "[&>div]:bg-destructive")} />
                   <div className="flex justify-between text-xs">
                     <span className="text-muted-foreground">{pct.toFixed(0)}% dari {formatRupiah(b.amount)}</span>
-                    <span className={cn("font-medium", over ? "text-destructive" : "text-[oklch(var(--income))]")}>
+                    <span className={cn("font-bold", over ? "text-destructive" : "text-foreground")}>
                       {over ? "−" : ""}{formatRupiah(Math.abs(b.amount - used))} {over ? "lebih" : "sisa"}
                     </span>
                   </div>
                   {over && (
-                    <div className="flex items-center gap-2 text-xs text-destructive bg-destructive/5 rounded-md px-2 py-1.5">
-                      <AlertTriangle className="h-3 w-3" /> Anggaran terlampaui!
+                    <div className="flex items-center gap-2 text-xs font-semibold text-destructive bg-destructive/10 border border-destructive/20 rounded-xl px-3 py-1.5">
+                      <AlertTriangle className="h-3.5 w-3.5" /> Anggaran terlampaui!
                     </div>
                   )}
                 </CardContent>

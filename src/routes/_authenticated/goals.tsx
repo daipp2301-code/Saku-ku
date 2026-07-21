@@ -116,7 +116,7 @@ function GoalsPage() {
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center justify-between gap-2 text-base">
                     <div className="flex items-center gap-2 min-w-0">
-                      {done && <CheckCircle2 className="h-4 w-4 text-[oklch(var(--income))] shrink-0" />}
+                      {done && <CheckCircle2 className="h-4 w-4 text-foreground shrink-0" />}
                       <span className="truncate">{g.name}</span>
                     </div>
                     <div className="flex gap-1">

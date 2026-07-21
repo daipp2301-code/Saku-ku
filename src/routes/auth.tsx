@@ -25,26 +25,33 @@ const forgotSchema = z.object({ email: z.string().email("Email tidak valid") });
 
 export const Route = createFileRoute("/auth")({
   head: () => ({ meta: [{ title: "Masuk — Saku Ku" }] }),
+  validateSearch: (search: Record<string, unknown>) => ({
+    tab: (search.tab === "register" ? "register" : "login") as "login" | "register",
+  }),
   component: AuthPage,
 });
 
 function AuthPage() {
   const navigate = useNavigate();
   const { user, loading } = useAuth();
-  const [tab, setTab] = useState<"login" | "register" | "forgot">("login");
+  const { tab: initialTab } = Route.useSearch();
+  const [tab, setTab] = useState<"login" | "register" | "forgot">(initialTab);
 
   useEffect(() => {
     if (!loading && user) navigate({ to: "/dashboard", replace: true });
   }, [user, loading, navigate]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-accent/30 to-background p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-muted/30 to-background p-4">
       <div className="w-full max-w-md">
+        <Link to="/" className="mb-4 inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors">
+          ← Kembali ke Beranda
+        </Link>
         <div className="mb-6 flex items-center justify-center gap-2">
-          <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary text-primary-foreground shadow-lg">
+          <div className="grid h-11 w-11 place-items-center rounded-xl bg-foreground text-background shadow-lg">
             <Wallet className="h-6 w-6" />
           </div>
-          <span className="text-2xl font-bold tracking-tight">Saku Ku</span>
+          <span className="text-2xl font-black tracking-tight">Saku Ku</span>
         </div>
         <Card className="border-border/60 shadow-xl">
           <CardHeader className="pb-2">

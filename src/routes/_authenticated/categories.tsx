@@ -124,7 +124,7 @@ function CategoryList({
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Tags className={tone === "income" ? "h-4 w-4 text-[oklch(var(--income))]" : "h-4 w-4 text-[oklch(var(--expense))]"} />
+          <Tags className="h-4 w-4 text-foreground/80" />
           {title}
         </CardTitle>
       </CardHeader>
