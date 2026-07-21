@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Saku Ku — Atur Pemasukan Dan Pengeluaran" },
-      { name: "description", content: "Aplikasi pengelola keuangan pribadi modern bertema monochrome. Kelola pemasukan, pengeluaran, anggaran, dan tabungan dalam satu platform cerdas." },
+      { name: "description", content: "Aplikasi pengelola keuangan pribadi. Kelola pemasukan, pengeluaran, anggaran, dan tabungan dalam satu platform cerdas." },
     ],
   }),
   component: LandingPage,
@@ -68,7 +68,7 @@ function LandingPage() {
           
           {/* Subtle badge */}
           <div className="animate-landing-slide-up mb-6 inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/80 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-muted-foreground shadow-sm backdrop-blur-sm">
-            <ShieldCheck className="h-3.5 w-3.5" /> Pelacak Keuangan Monochrome Cerdas
+            <ShieldCheck className="h-3.5 w-3.5" /> Pelacak Keuangan Cerdas
           </div>
 
           {/* Main heading */}
@@ -84,7 +84,7 @@ function LandingPage() {
 
           {/* Subtitle */}
           <p className="animate-landing-slide-up landing-delay-2 mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-xl">
-            Kelola arus kas pribadi Anda dalam balutan desain <strong className="text-foreground font-bold">Monochrome Premium</strong>. 
+            Kelola arus kas pribadi Anda dalam balutan desain <strong className="text-foreground font-bold">Modern Premium</strong>. 
             Pantau saldo, analisis pengeluaran, buat anggaran, dan capai target tabungan secara terukur.
           </p>
 
@@ -126,7 +126,7 @@ function LandingPage() {
                 <span className="ml-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">Pratinjau Dashboard Saku Ku</span>
               </div>
               <div className="text-xs font-semibold px-3 py-1 rounded-full bg-foreground/8 border border-border/60">
-                Tema Monochrome
+                
               </div>
             </div>
 
@@ -205,7 +205,7 @@ function LandingPage() {
         <section className="w-full bg-card/50 border-t border-b border-border/60 py-20 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center max-w-xl mx-auto mb-16">
-              <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Fitur Unggulan Monochrome</h2>
+              <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Fitur Unggulan</h2>
               <p className="text-muted-foreground mt-3 text-base">Semua kebutuhan manajemen keuangan pribadi Anda dalam tata letak yang bersih dan fokus.</p>
             </div>
 
@@ -241,7 +241,7 @@ function LandingPage() {
               Siap Memulai Kelola Keuangan?
             </h2>
             <p className="mt-4 text-background/80 text-base sm:text-lg max-w-xl mx-auto">
-              Gabung sekarang dan nikmati pengalaman mencatat keuangan pribadi dengan tema UI/UX Monochrome yang elegan.
+              Gabung sekarang dan nikmati pengalaman mencatat keuangan pribadi dengan tema yang elegan.
             </p>
             
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -268,7 +268,7 @@ function LandingPage() {
       <footer className="relative z-10 border-t border-border/60 py-8 px-6 text-center text-xs text-muted-foreground bg-background">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 font-bold text-foreground">
-            <Wallet className="h-4 w-4" /> Saku Ku — Monochrome Edition
+            <Wallet className="h-4 w-4" /> Saku Ku —  New Edition
           </div>
           <div>© {new Date().getFullYear()} Saku Ku. Hak Cipta Dilindungi.</div>
         </div>
